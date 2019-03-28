@@ -23,12 +23,17 @@ const authController =  async (req, res) => {
     // evitando o retorno da senha ao autenticar
     user.password = undefined;
     user.phone = undefined;
-    
+
+
+    await User.findByIdAndUpdate(user.id, {
+        '$set': { lastLogon: new Date() }
+    });
 
     
     res.json({ 
         user, 
-        token: generateToken({ id: user.id }),
+        token: generateToken({ id: user.id })
+        
     });
 };
 
