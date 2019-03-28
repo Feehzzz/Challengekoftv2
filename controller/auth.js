@@ -22,6 +22,8 @@ const authController =  async (req, res) => {
         return res.status(400).send ({ error: 'Senha invalida' });
     // evitando o retorno da senha ao autenticar
     user.password = undefined;
+    user.phone = undefined;
+    
 
     
     res.send({ 
