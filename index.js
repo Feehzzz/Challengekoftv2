@@ -16,5 +16,5 @@ app.use(require('./config/routes'));
 
 
 app.listen(webport, () => {
-    console.log("Server is running on port " + webport);
+    console.log('Server is running on port' + webport);
 });

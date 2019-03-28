@@ -11,15 +11,15 @@ const resetController = async (req, res) => {
             .select('+passwordResetToken passwordResetExpires');
 
         if (!user)
-            return res.status(400).send({ error: "Usuário não encontrado!"});
+            return res.status(400).send({ error: 'Usuário não encontrado!' });
 
         if(token !== user.passwordResetToken)
-            return res.status(400).send({ error: " Token invalido"});
+            return res.status(400).send({ error: 'Token invalido' });
 
         const now = new Date();
 
         if (now > user.passwordResetExpires)
-            return res.status(400).send({ error: "Token expirado, gere um novo"});
+            return res.status(400).send({ error: 'Token expirado, gere um novo' });
         
         user.password = password;
 
@@ -27,7 +27,7 @@ const resetController = async (req, res) => {
         res.send();
 
     } catch (err){
-        res.status(400).send({ error: "Não foi possivel resetar a senha, tente novamente"});
+        res.status(400).send({ error: 'Não foi possivel resetar a senha, tente novamente' });
 
 
     };

@@ -1,10 +1,8 @@
 // conexão com banco de dados
 const mongoose = require('mongoose');
-require('dotenv').config();
-
 
 mongoose.connect('mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@'+process.env.DB_HOST,{
-    useNewUrlParser: true  });
+    useNewUrlParser: true });
 
 
 module.exports = mongoose; 

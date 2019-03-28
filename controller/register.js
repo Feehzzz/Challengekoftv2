@@ -15,7 +15,7 @@ const registerController = async (req, res) => {
     
     try {
         if (await User.findOne({ email }))
-            return res.status(400).send({ error: 'Email já cadastrado'});
+            return res.status(400).send({ error: 'Email já cadastrado' });
 
         const user = await User.create(req.body);  
         // evitando o retorno da senha ao criar cadastro
@@ -26,7 +26,7 @@ const registerController = async (req, res) => {
             token: generateToken({ id: user.id }),
         });
     }   catch (err) {
-       return res.status(400).send ({ error: "Registration fail"});
+       return res.status(400).send ({ error: 'Registration fail' });
         
     }
     

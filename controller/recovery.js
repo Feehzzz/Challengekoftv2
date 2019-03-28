@@ -10,10 +10,10 @@ const recoveryController = async (req, res) =>{
     const { email } = req.body;
 
     try {
-        const user = await User.findOne ({email});
+        const user = await User.findOne ({ email });
 
         if (!user)
-        return res.status(400).send({error: "Usuário não encontrado!"});
+        return res.status(400).send({ error: 'Usuário não encontrado!' });
 
         const token = crypto.randomBytes(20).toString('hex');
 
@@ -31,15 +31,15 @@ const recoveryController = async (req, res) =>{
         mailer.sendMail({ 
             to: email,
             from: 'fehshuffle@gmail.com',
-            template: '../models/forgot_password',
-            context: {token},
+            template: '../config/forgot_password',
+            context: { token },
         }, (err) => {
             if(err)
-                return res.status(400).send({error: 'Não foi possível enviar e-mail de recuperação'});
+                return res.status(400).send({ error: 'Não foi possível enviar e-mail de recuperação' });
                 return res.send();
         });
     } catch (err){
-        res.status(400).send({error: 'Erro na recuperação de senha, tente novamente'});
+        res.status(400).send({ error: 'Erro na recuperação de senha, tente novamente' });
     }
 }
 
