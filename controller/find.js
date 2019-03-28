@@ -1,12 +1,14 @@
 const jwt = require('jsonwebtoken');
 const express = require('express');
-
+const User = require('../models/user');
 express.Router();
 
 
 
-const searchController = (req, res) => {
+const searchController = async (req, res) => {
     const authHeader = req.headers.authorization;
+    const users = await User.find();
+    
 
     if(!authHeader)
     return res.status(401).send({ error: 'Token não informado '});
@@ -21,11 +23,11 @@ const searchController = (req, res) => {
     if(!/^Bearer$/i.test(scheme))
         return res.status(401).send ({ error: 'Token malformatted'});
     
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+    jwt.verify(token, process.env.SECRET, (err) => {
         if (err) return res.status(401).send({error: 'Token invalido'});
 
-        req.userId = decoded.id;
-        res.send({ user: req.userId })
+         
+        res.send({ users })
 
     });
 };
