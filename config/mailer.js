@@ -7,7 +7,7 @@ const hbs = require('nodemailer-express-handlebars');
 
 const transport = nodemailer.createTransport({
   host: process.env.HOST,
-  port: process.env.PORT,
+  port: process.env.MAILPORT,
   auth: {user: process.env.USER, pass: process.env.PASS }
   
   });

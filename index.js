@@ -1,7 +1,7 @@
 // import das dependencias
 const express = require('express');
 const bodyParser = require('body-parser');
-const webport = process.env.webport || 3000;
+const webport = process.env.PORT || 3000;
 const app = express();
 
 require('dotenv').config();
