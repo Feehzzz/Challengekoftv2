@@ -1,10 +1,9 @@
-const express = require('express');
 const User = require('../models/user.js');
 
-const router = express.Router();
 
 
-const resetController =  async (req, res) => {
+
+const resetController = async (req, res) => {
     const { email, token, password } = req.body;
 
     try {

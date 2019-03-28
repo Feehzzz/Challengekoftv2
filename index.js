@@ -1,7 +1,7 @@
 // import das dependencias
 const express = require('express');
 const bodyParser = require('body-parser');
-var webport = process.env.webport || 3000;
+const webport = process.env.webport || 3000;
 const app = express();
 
 require('dotenv').config();
@@ -11,8 +11,8 @@ require('dotenv').config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(require('./routes'));
-app.use(require('./routerController'));
+
+app.use(require('./config/routes'));
 
 
 app.listen(webport, () => {

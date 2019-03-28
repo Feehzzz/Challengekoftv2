@@ -1,5 +1,5 @@
 // import das dependencias 
-const mongoose = require('../server');
+const mongoose = require('../config/server');
 const bcrypt = require('bcryptjs');
 
 

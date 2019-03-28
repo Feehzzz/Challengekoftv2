@@ -1,8 +1,11 @@
 const jwt = require('jsonwebtoken');
+const express = require('express');
+
+express.Router();
 
 
 
-module.exports = (req, res, next) => {
+const searchController = (req, res) => {
     const authHeader = req.headers.authorization;
 
     if(!authHeader)
@@ -19,10 +22,13 @@ module.exports = (req, res, next) => {
         return res.status(401).send ({ error: 'Token malformatted'});
     
     jwt.verify(token, process.env.SECRET, (err, decoded) => {
-        console.log(process.env.SECRET);
         if (err) return res.status(401).send({error: 'Token invalido'});
 
         req.userId = decoded.id;
-        return next();
+        res.send({ user: req.userId })
+
     });
 };
+   
+    
+module.exports = searchController;
