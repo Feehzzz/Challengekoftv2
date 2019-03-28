@@ -26,7 +26,7 @@ const authController =  async (req, res) => {
     
 
     
-    res.send({ 
+    res.json({ 
         user, 
         token: generateToken({ id: user.id }),
     });

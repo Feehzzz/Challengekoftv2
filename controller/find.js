@@ -10,7 +10,7 @@ const searchController = async (req, res) => {
     
 
     if(!authHeader)
-    return res.status(401).send({ error: 'Token não informado' });
+    return res.status(401).send({ error: 'Não autorizado' });
 
     const parts = authHeader.split(' ');
     if (!parts.length === 2)
