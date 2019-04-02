@@ -6,7 +6,7 @@ const registerController = require('../controller/register');
 const authController = require('../controller/auth');
 const recoveryController = require('../controller/recovery');
 const resetController = require('../controller/reset');
-const searchController = require('../controller/find');
+const searchController = require('../controller/list');
 const homePage = require('../controller/home');
 
 
@@ -16,7 +16,7 @@ routes.post('/register', registerController);
 routes.post('/authenticate', authController);
 routes.post('/forgot_password', recoveryController);
 routes.post('/reset_password', resetController);
-routes.get('/find_users', searchController);
+routes.get('/list_users', searchController);
 routes.get('/', homePage);
 
 
