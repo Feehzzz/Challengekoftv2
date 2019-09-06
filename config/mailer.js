@@ -4,9 +4,9 @@ const hbs = require('nodemailer-express-handlebars');
 
 // conexão com o servidor para envio de e-mail
 const transport = nodemailer.createTransport({
-  host: process.env.HOST,
-  port: process.env.MAILPORT,
-  auth: { user: process.env.USER, pass: process.env.PASS }
+  host: process.env.MAIL_HOST,
+  port: process.env.MAIL_PORT,
+  auth: { user: process.env.MAIL_USER, pass: process.env.MAIL_PASS }
   
   });
 
